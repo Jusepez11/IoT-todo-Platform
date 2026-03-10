@@ -1,0 +1,24 @@
+# Environment variables — never commit these
+.env
+
+# Dependencies
+backend/node_modules/
+
+# AWS certificates — never commit these
+*.pem
+*.key
+*.crt
+certs/
+
+# PlatformIO
+esp32/.lpio/
+esp32/.lpioenvs/
+esp32/lib/
+esp32/.pio/
+esp32/.vscode/
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
