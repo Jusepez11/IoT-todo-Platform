@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "mariadb": "^3.5.2"
+    "http": "^0.0.1-security",
+    "https": "^1.0.0",
+    "mariadb": "^3.5.2",
+    "path": "^0.12.7"
   }
 }
