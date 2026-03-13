@@ -1,6 +1,6 @@
 # Environment variables — never commit these
 .env
-
+node_modules/
 # Dependencies
 backend/node_modules/
 
