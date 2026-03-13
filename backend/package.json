@@ -4,5 +4,8 @@
     "https": "^1.0.0",
     "mariadb": "^3.5.2",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "express": "^5.2.1"
   }
 }
