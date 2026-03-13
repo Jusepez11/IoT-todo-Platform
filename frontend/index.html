@@ -1,24 +1,57 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Login</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <h1>
-        Login
-        </h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display — Todo</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"></link>
+</head>
+<body>
+<div class="shell">
 
-        <div>
-            <label for="code">Device Code:</label>
-            <input id="code">
-            <input id="submit" type="submit">
+    <header>
+        <div class="wordmark">Display <em>— todo</em></div>
+    </header>
+
+    <!-- Connect Screen -->
+    <div id="screen-connect" class="screen active">
+        <p class="connect-label">Getting started</p>
+        <h1 class="connect-heading">Enter your<br>device code.</h1>
+        <p class="connect-sub">The code is shown on your e-ink display after first boot.</p>
+
+        <div class="code-input-wrap">
+            <input
+                id="device-code"
+                type="text"
+                placeholder="e.g. a3f9bc"
+                autocomplete="off"
+                spellcheck="false"
+            />
+            <button id="btn-connect">Connect</button>
         </div>
-        
-        <script src="" async defer></script>
-    </body>
+        <p class="connect-error" id="connect-error"></p>
+    </div>
+
+    <!-- Todo Screen -->
+    <div id="screen-todo" class="screen">
+        <div class="todo-meta">
+            <span class="device-tag">Device <span id="device-label"></span></span>
+            <button class="btn-disconnect" id="btn-disconnect">disconnect</button>
+        </div>
+
+        <div class="add-wrap">
+            <input id="task-input"  type="text"  placeholder="Add a task..." />
+            <input id="due-input"   type="date" />
+            <button id="btn-add">+</button>
+        </div>
+
+        <p class="section-label">Tasks</p>
+        <ul id="task-list"></ul>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
 </html>
