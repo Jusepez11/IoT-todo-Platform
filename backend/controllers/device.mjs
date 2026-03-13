@@ -36,9 +36,9 @@ const get = async (event) => {
             'SELECT * FROM device WHERE device_id = ?', [device_id]
         );
         conn.release();
-        return response(200, rows);
+        return respond(200, rows);
     } catch (error) {
-        return response(400, error.message);
+        return respond(400, error.message);
     }
 }
 
@@ -49,9 +49,9 @@ const getAll = async (event) => {
             'SELECT * FROM device'        
         );
         conn.release();
-        return response(200, rows);
+        return respond(200, rows);
     } catch (error) {
-        return response(400, error.message);
+        return respond(400, error.message);
     }
 }
 
@@ -75,7 +75,7 @@ const create = async (event) => {
         conn.release();
         return respond(201, { message: 'Device registered' });
     } catch (error) {
-        return response(400, error.message);
+        return respond(400, error.message);
     }
 }
 
@@ -87,9 +87,9 @@ const remove = async (event) => {
             'DELETE FROM device WHERE device_id = ?', [device_id]
         );
         conn.release();
-        return response(200, { message: 'Device deleted'});
+        return respond(200, { message: 'Device deleted'});
     } catch (error) {
-        return response(400, error.message);
+        return respond(400, error.message);
     }
 }
 

@@ -10,8 +10,8 @@ export const handleTask = async (event) => {
     try {
         switch (method) {
             case 'GET':
-                const id = path.split('/task/')[1];
-                return id ? await get(id) : await getAll(event);
+                //const id = path.split('/task/')[1];
+                return await getALL(event);//id ? await get(id) : 
 
             case 'POST':
                 return await create(event);
@@ -43,9 +43,9 @@ const get = async (event) => {
             'SELECT * FROM task WHERE device_id = ? and task_id = ?', [task_id, device_id]
         );
         conn.release();
-        return response(200, rows);
+        return respond(200, rows);
     } catch (error) {
-        return response(400, error.message);
+        return respond(400, error.message);
     }
 }
 
@@ -58,9 +58,9 @@ const getAll = async (event) => {
             'SELECT * FROM task WHERE device_id = ?', [device_id]
         );
         conn.release();
-        return response(200, rows);
+        return respond(200, rows);
     } catch (error) {
-        return response(400, error.message);
+        return respond(400, error.message);
     }
 }
 
@@ -72,9 +72,9 @@ const getALL = async (event) => {
             'SELECT * FROM task'        
         );
         conn.release();
-        return response(200, rows);
+        return respond(200, rows);
     } catch (error) {
-        return response(400, error.message);
+        return respond(400, error.message);
     }
 }
 
@@ -87,9 +87,9 @@ const create = async (event) => {
             'INSERT INTO task (device_id, task_description, due_date) VALUES (?, ?, ?)', [device_id, task_description, due_date]
         );
         conn.release();
-        return response(201, rows);
+        return respond(201, rows);
     } catch (error) {
-        return response(400, error.message);
+        return respond(400, error.message);
     }
 }
 
@@ -101,9 +101,9 @@ const update = async (event) => {
             'UPDATE task SET task_description = ?, due_date = ? WHERE device_id = ?', [task_description, due_date, device_id]
         );
         conn.release();
-        return response(200, rows);
+        return respond(200, rows);
     } catch (error) {
-        return response(400, error.message);
+        return respond(400, error.message);
     }
 }
 
@@ -115,23 +115,23 @@ const done = async (event) => {
             'UPDATE task SET is_complete = ? WHERE task_id = ?', [is_complete, task_id]
         );
         conn.release();
-        return response(200, rows);
+        return respond(200, rows);
     } catch (error) {
-        return response(400, error.message);
+        return respond(400, error.message);
     }
 }
 
 const remove = async (event) => {
     try{
-        const { device_id } = JSON.parse(event.body);
+        const { task_id } = JSON.parse(event.body);
         const conn = await pool.getConnection();
         const rows = await conn.query(
-            'DELETE FROM task WHERE device_id = ?', [device_id]
+            'DELETE FROM task WHERE task_id = ?', [task_id]
         );
         conn.release();
-        return response(200, { message: 'Task deleted'});
+        return respond(200, { message: 'Task deleted'});
     } catch (error) {
-        return response(400, error.message);
+        return respond(400, error.message);
     }
 }
 
