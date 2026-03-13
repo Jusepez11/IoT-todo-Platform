@@ -16,11 +16,12 @@ const pool = createPool({
 
 const migrate = async () => {
     const conn = await createConnection({
-        host:               process.env.DB_HOST,
-        port:               Number(process.env.DB_PORT),
-        user:               process.env.DB_USER,
-        password:           process.env.DB_PASSWORD,
-        multipleStatements: true
+    host:            process.env.DB_HOST,
+    port:            Number(process.env.DB_PORT),
+    user:            process.env.DB_USER,
+    password:        process.env.DB_PASSWORD,
+    database:        process.env.DB_NAME,
+    multipleStatements: true
     });
 
     // Check if Tasks table already exists

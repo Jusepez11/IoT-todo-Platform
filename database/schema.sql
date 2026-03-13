@@ -1,6 +1,3 @@
-CREATE DATABASE IF NOT EXISTS IoT_AWS_Display;
-USE IoT_AWS_Display;
-
 CREATE TABLE IF NOT EXISTS task (
     task_id             VARCHAR(36)     PRIMARY KEY DEFAULT (UUID()),
     device_id           VARCHAR(36)     NOT NULL,
